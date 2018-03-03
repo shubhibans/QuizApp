@@ -30,6 +30,7 @@ namespace QuizApp
         {
             services.AddMvc();
             services.AddDbContext<AppIdDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("QuizApp")));
+            services.AddDbContext<AppDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddAutoMapper();
             var builder = services.AddIdentityCore<AppUser>(o =>
             {

@@ -13,5 +13,6 @@ namespace QuizApp.ViewModels
         public string LastName { get; set; }
         public string Location { get; set; }
         public string Company { get; set; }
+        public string Role { get; set; }
     }
 }

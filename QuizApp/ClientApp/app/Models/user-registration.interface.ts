@@ -5,4 +5,5 @@ export interface UserRegistration {
     lastName: string;
     location: string;
     company: string;
+    role: string;
 }

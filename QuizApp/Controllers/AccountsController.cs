@@ -10,6 +10,7 @@ using QuizApp.Model;
 using QuizApp.ViewModels;
 using AutoMapper;
 using QuizApp.Helpers;
+using System.Security.Claims;
 
 namespace QuizApp.Controllers
 {
@@ -44,8 +45,23 @@ namespace QuizApp.Controllers
 
                 if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
 
-                await _appDbContext.AppAdmins.AddAsync(new AppAdmin { IdentityId = userIdentity.Id, Location = model.Location, Company=model.Company });
+            if (model.Role == "AppAdmin")
+            {
+              
+
+                await _appDbContext.AppAdmins.AddAsync(new AppAdmin { IdentityId = userIdentity.Id, Location = model.Location, Company = model.Company });
+                await _userManager.AddClaimAsync(userIdentity, new Claim(ClaimTypes.Role, "Administrator"));
                 await _appDbContext.SaveChangesAsync();
+            }
+            else {
+                await _appDbContext.Interviewees.AddAsync(new Interviewee { IdentityId = userIdentity.Id, Location = model.Location, Company = model.Company });
+                await _userManager.AddClaimAsync(userIdentity, new Claim(ClaimTypes.Role, "Interviewee"));
+                await _appDbContext.SaveChangesAsync();
+
+            }
+
+
+            
 
                 return new OkObjectResult("Account created");
             }

@@ -17,6 +17,7 @@ namespace QuizApp.Persistence
         }
 
         public DbSet<AppAdmin> AppAdmins {get; set;}
+        public DbSet<Interviewee> Interviewees { get; set; }
 
     }
 }

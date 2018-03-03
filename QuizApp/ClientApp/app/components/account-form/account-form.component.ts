@@ -23,7 +23,7 @@ export class AccountFormComponent implements OnInit {
         this.isRequesting = true;
         this.errors = '';
         if (valid) {
-            this.userService.register(value.email, value.password, value.firstName, value.lastName, value.location,value.company)
+            this.userService.register(value.email, value.password, value.firstName, value.lastName, value.location, value.company, value.role)
                 .finally(() => this.isRequesting = false)
                 .subscribe(
                 result => {

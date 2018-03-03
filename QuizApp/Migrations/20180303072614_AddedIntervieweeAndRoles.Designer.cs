@@ -11,9 +11,10 @@ using System;
 namespace QuizApp.Migrations
 {
     [DbContext(typeof(AppIdDBContext))]
-    partial class AppIdDBContextModelSnapshot : ModelSnapshot
+    [Migration("20180303072614_AddedIntervieweeAndRoles")]
+    partial class AddedIntervieweeAndRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

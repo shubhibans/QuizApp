@@ -28,7 +28,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
         HttpModule,
         FormsModule,
         RouterModule.forRoot([
-            { path: '', redirectTo: 'login', pathMatch: 'full' },
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'account', component: AccountFormComponent },
             { path: 'counter', component: CounterComponent },
