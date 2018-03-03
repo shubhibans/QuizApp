@@ -12,6 +12,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { AccountFormComponent } from './components/account-form/account-form.component';
 import { UserServiceService } from "./Services/user-service.service";
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { QuestionPageComponent } from './components/question-page/question-page.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
         FetchDataComponent,
         HomeComponent,
         AccountFormComponent,
-        LoginPageComponent
+        LoginPageComponent,
+        QuestionPageComponent
     ],
     imports: [
         CommonModule,

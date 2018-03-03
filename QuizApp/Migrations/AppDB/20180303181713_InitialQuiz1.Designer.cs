@@ -11,9 +11,10 @@ using System;
 namespace QuizApp.Migrations.AppDB
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20180303181713_InitialQuiz1")]
+    partial class InitialQuiz1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,10 +94,7 @@ namespace QuizApp.Migrations.AppDB
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("NormalizedType")
-                        .HasMaxLength(255);
-
-                    b.Property<string>("Type")
+                    b.Property<string>("type")
                         .IsRequired()
                         .HasMaxLength(255);
 

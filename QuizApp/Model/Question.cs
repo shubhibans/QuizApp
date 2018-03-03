@@ -16,11 +16,12 @@ namespace QuizApp.Model
         public string Question_txt { get; set; }
         [Required]
         public QuestionType QuestionType { get; set; }
-        public ICollection<Option> Options { get; set; }
         [Required]
         public SubjectArea SubjectArea { get; set; }
         [Required]
         public Difficulty Difficulty { get; set; }
         public bool Answered { get; set; }
+        public ICollection<Option> Options { get; set; }
+        
     }
 }

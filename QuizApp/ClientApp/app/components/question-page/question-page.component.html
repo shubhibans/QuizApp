@@ -1,0 +1,93 @@
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Please enter your question.</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form #f="ngForm" novalidate (ngSubmit)="registerQuestion(f)">
+                <div class="form-group">
+                    <label for="question-type">Question Type</label>
+                    <select class="form-control" id="question-type" placeholder="" name="questiontype" tmFocus ngModel>
+                        <option id="multiplechoice">Multiple Choice Question</option>
+                        <option id="paragraph" disabled="disabled">Paragraph</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select class="form-control" id="subject" placeholder="" name="subject" tmFocus ngModel>
+                        <option id="C#">C#</option>
+                        <option id="Java">Java</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="questiontext">Question Text</label>
+                    <input type="text" class="form-control" id="questiontext" placeholder="" required name="questiontext" ngModel>
+          </div>
+                <div class="form-group">
+                    <label for="option1">Option 1</label>
+                    <input type="text" class="form-control" id="option1" name="option1" placeholder="option1" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="option2">Option 2</label>
+                    <input type="text" class="form-control" id="option2" name="option2" placeholder="option2" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="option3">Option 3</label>
+                    <input type="text" class="form-control" id="option3" name="option3" placeholder="option3" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="option4">Option 4</label>
+                    <input type="text" class="form-control" id="option4" name="option4" placeholder="option4" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="option5">Option 5</label>
+                    <input type="text" class="form-control" id="option5" name="option5" placeholder="option5" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="option6">Option 6</label>
+                    <input type="text" class="form-control" id="option6" name="option6" placeholder="option6" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="Role">Difficulty</label>
+                    <select class="form-control" id="Difficulty" placeholder="Difficulty" required name="Difficulty" ngModel>
+                        <option id="Beginner">Beginner</option>
+                        <option id="Intermediate">Intermediate</option>
+                        <option id="Expert">Expert</option>
+                        <option id="Architect">Architect</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Sign Up</button>
+                    <!--<app-spinner [isRunning]="isRequesting"></app-spinner>-->
+                </div>
+
+                <div *ngIf="errors" class="alert alert-danger" role="alert">
+                    <strong>Oops!</strong> {{errors}}
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>For Bulk Upload Use a file.</h2>
+            <form #f="ngForm" novalidate (ngSubmit)="registerQuestionsBulk(f)">
+                <div class="form-group">
+                    <input type="file" name="filepath" acccept=".xlsx" />
+                    <!--<app-spinner [isRunning]="isRequesting"></app-spinner>-->
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Sign Up Bulk</button>
+                    <!--<app-spinner [isRunning]="isRequesting"></app-spinner>-->
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
