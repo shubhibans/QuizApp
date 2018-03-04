@@ -47,6 +47,17 @@ namespace QuizApp.Controllers
             return Ok(questionType);
         }
 
+        public QuestionType getQuestType(string name)
+        {
+            var questionType = _context.QuestionType.SingleOrDefaultAsync(m => m.Type == name);
+            QuestionType a = new QuestionType();
+            a.Id = questionType.Result.Id;
+            a.Type = questionType.Result.Type;
+            a.NormalizedType = questionType.Result.NormalizedType;
+            return a;
+            
+        }
+
         // PUT: api/QuestionTypes/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutQuestionType([FromRoute] int id, [FromBody] QuestionType questionType)

@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace QuizApp.Model
 {
@@ -8,5 +11,10 @@ namespace QuizApp.Model
         [Required]
         [MaxLength(255)]
         public string Area { get; set; }
+
+        public static implicit operator SubjectArea(Task<IActionResult> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

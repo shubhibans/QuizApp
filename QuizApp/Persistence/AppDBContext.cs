@@ -25,5 +25,7 @@ namespace QuizApp.Persistence
 
         public DbSet<QuizApp.Model.QuestionType> QuestionType { get; set; }
 
+        public DbSet<QuizApp.Model.Option> Option { get; set; }
+
     }
 }

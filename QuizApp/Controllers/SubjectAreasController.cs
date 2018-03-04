@@ -47,6 +47,18 @@ namespace QuizApp.Controllers
             return Ok(subjectArea);
         }
 
+        public SubjectArea getSubArea(string subject)
+        {
+            var sub =  _context.SubjectArea.SingleOrDefaultAsync(m => m.Area == subject);
+            SubjectArea s = new SubjectArea();
+
+            s.Id = sub.Result.Id;
+            s.Area = sub.Result.Area;
+            
+            return s;
+
+        }
+
         // PUT: api/SubjectAreas/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSubjectArea([FromRoute] int id, [FromBody] SubjectArea subjectArea)

@@ -47,6 +47,15 @@ namespace QuizApp.Controllers
             return Ok(difficulty);
         }
 
+        public Difficulty getDifficultyMethod(string DifficultyLevel)
+        {
+            var difficulty =  _context.Difficulty.SingleOrDefaultAsync(m => m.DifficultyLevel == DifficultyLevel);
+            Difficulty d = new Difficulty();
+            d.Id = difficulty.Result.Id;
+            d.DifficultyLevel = difficulty.Result.DifficultyLevel;
+            return d;
+        }
+
         // PUT: api/Difficulties/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDifficulty([FromRoute] int id, [FromBody] Difficulty difficulty)

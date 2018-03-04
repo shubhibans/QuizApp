@@ -13,6 +13,7 @@ import { AccountFormComponent } from './components/account-form/account-form.com
 import { UserServiceService } from "./Services/user-service.service";
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { QuestionPageComponent } from './components/question-page/question-page.component';
+import { QuestionService } from "./Services/question.service";
 
 @NgModule({
     declarations: [
@@ -33,13 +34,14 @@ import { QuestionPageComponent } from './components/question-page/question-page.
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'account', component: AccountFormComponent },
+            { path: 'add-Question', component: QuestionPageComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'login', component: LoginPageComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
-    providers:[UserServiceService]
+    providers:[UserServiceService, QuestionService]
 })
 export class AppModuleShared {
 }

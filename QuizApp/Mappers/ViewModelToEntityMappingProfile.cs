@@ -13,6 +13,7 @@ namespace QuizApp.Mappers
         public ViewModelToEntityMappingProfile()
         {
             CreateMap<RegistrationViewModel, AppUser>().ForMember(au => au.UserName, map => map.MapFrom(vm => vm.Email));
+            CreateMap<QuestionViewModel, Question>().ForMember(qu => qu.Question_txt, map => map.MapFrom(vm => vm.Questiontext));
         }
 
     }

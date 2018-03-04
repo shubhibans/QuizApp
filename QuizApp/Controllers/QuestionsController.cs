@@ -1,32 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuizApp.Model;
 using QuizApp.Persistence;
-using Microsoft.AspNetCore.Identity;
+using QuizApp.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace QuizApp.Controllers
 {
-    [Produces("application/json")]
+    
     [Route("api/Questions")]
     public class QuestionsController : Controller
     {
         private readonly AppDBContext _context;
+        private readonly IMapper _mapper;
 
-        public QuestionsController(AppDBContext context)
+        public QuestionsController(AppDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Questions
         [HttpGet]
         public IEnumerable<Question> GetQuestion()
         {
-                      
             return _context.Question;
         }
 
@@ -86,17 +86,46 @@ namespace QuizApp.Controllers
 
         // POST: api/Questions
         [HttpPost]
-        public async Task<IActionResult> PostQuestion([FromBody] Question question)
+        public async Task<IActionResult> PostQuestion([FromBody] QuestionViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Question.Add(question);
-            await _context.SaveChangesAsync();
+            var diff = new DifficultiesController(_context).getDifficultyMethod(model.Difficulty);
+            var subject =  new SubjectAreasController(_context).getSubArea(model.Subject);
+            var questtype = new QuestionTypesController(_context).getQuestType(model.Questiontype);
 
-            return CreatedAtAction("GetQuestion", new { id = question.Id }, question);
+            //var result=new OptionsController(_context)
+            Question Question1 = new Question();
+
+            Question1.Difficulty = diff;
+            Question1.SubjectArea = subject;
+            Question1.Question_txt = model.Questiontext;
+            Question1.QuestionType = questtype;
+            Question1.Answered = false;
+            
+            _context.Question.Add(Question1);
+            var result = await _context.SaveChangesAsync();
+
+            List<Option> options = new List<Option>();
+            int i = 1;
+            foreach (string a in model.Options1)
+            {
+                if (i == 1)
+                    options.Add(new Option { Question = Question1, Body = a, IsAnswer = true });
+                else
+                {
+                    options.Add(new Option { Question = Question1, Body = a });
+                }
+
+                i++;
+            }
+
+            var result1 = new OptionsController(_context).AddOptions(options);
+            int y = 0;
+            return new OkObjectResult("Questiom created"); ;
         }
 
         // DELETE: api/Questions/5

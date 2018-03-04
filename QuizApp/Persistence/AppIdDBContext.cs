@@ -10,7 +10,7 @@ namespace QuizApp.Persistence
 {
     public class AppIdDBContext : IdentityDbContext<AppUser>
     {
-        public AppIdDBContext(DbContextOptions options)
+        public AppIdDBContext(DbContextOptions<AppIdDBContext> options)
         : base(options)
         {
 
