@@ -98,14 +98,15 @@ namespace QuizApp.Controllers
             var questtype = new QuestionTypesController(_context).getQuestType(model.Questiontype);
 
             //var result=new OptionsController(_context)
-            Question Question1 = new Question();
+            Question Question1 = new Question
+            {
+                Difficulty = diff,
+                SubjectArea = subject,
+                Question_txt = model.Questiontext,
+                QuestionType = questtype,
+                Answered = false
+            };
 
-            Question1.Difficulty = diff;
-            Question1.SubjectArea = subject;
-            Question1.Question_txt = model.Questiontext;
-            Question1.QuestionType = questtype;
-            Question1.Answered = false;
-            
             _context.Question.Add(Question1);
             var result = await _context.SaveChangesAsync();
 

@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="BulkFiles\AlgaeFiles\" />
     <Folder Include="ClientApp\app\Services\" />
     <Folder Include="ClientApp\Services\" />
   </ItemGroup>
