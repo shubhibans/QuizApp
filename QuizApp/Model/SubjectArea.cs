@@ -11,6 +11,9 @@ namespace QuizApp.Model
         [Required]
         [MaxLength(255)]
         public string Area { get; set; }
+        [Required]
+        [MaxLength(255)]
+        public string SubArea { get; set; }
 
         public static implicit operator SubjectArea(Task<IActionResult> v)
         {

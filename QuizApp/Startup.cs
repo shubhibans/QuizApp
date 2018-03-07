@@ -13,6 +13,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using QuizApp.Model;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace QuizApp
 {
@@ -46,8 +48,8 @@ namespace QuizApp
 
             
             services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
-        
-    }
+            
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
