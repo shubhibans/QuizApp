@@ -1,0 +1,21 @@
+<fieldset *ngFor="let row of rows">
+    <div class="row">
+
+        <div div class="col-sm-4">
+            <input class="form-control" type="text" id="Subject{{row}}" />
+        </div>
+        <div div class="col-sm-4">
+            <input class="form-control" type="text" id="Subarea{{row}}" />
+        </div>
+        <div div class="col-sm-4">
+            <input class="form-control"  type="text" id="Numquestion{{row}}" />
+        </div>
+    </div>
+    <br />
+</fieldset>
+
+
+ 
+<br />
+<button (click)="AddRow()" class="btn btn-success">Add</button>
+<button  (click)="DeleteRow()" [disabled]="showDelete()" class="btn btn-danger" >Delete</button> 

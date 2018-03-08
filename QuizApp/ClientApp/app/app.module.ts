@@ -14,6 +14,7 @@ import { UserServiceService } from "./Services/user-service.service";
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { QuestionPageComponent } from './components/question-page/question-page.component';
 import { QuestionService } from "./Services/question.service";
+import { GenerateQuizComponent } from './components/generate-quiz/generate-quiz.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { QuestionService } from "./Services/question.service";
         HomeComponent,
         AccountFormComponent,
         LoginPageComponent,
-        QuestionPageComponent
+        QuestionPageComponent,
+        GenerateQuizComponent
     ],
     imports: [
         CommonModule,
@@ -38,6 +40,7 @@ import { QuestionService } from "./Services/question.service";
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'login', component: LoginPageComponent },
+            { path: 'generate-quiz', component: GenerateQuizComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
