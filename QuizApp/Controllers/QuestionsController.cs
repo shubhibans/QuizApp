@@ -25,8 +25,7 @@ namespace QuizApp.Controllers
         }
 
         // GET: api/Questions
-        [HttpGet]
-        [Authorize]
+        [HttpGet]        
         public IEnumerable<Question> GetQuestion()
         {
             return _context.Question;

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+import { AuthGuard } from './auth.guard';
+
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
@@ -38,14 +40,14 @@ import { GenerateQuizComponent } from './components/generate-quiz/generate-quiz.
             { path: 'account', component: AccountFormComponent },
             { path: 'add-Question', component: QuestionPageComponent },
             { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'fetch-data', component: FetchDataComponent, canActivate : [AuthGuard] },
             { path: 'login', component: LoginPageComponent },
             { path: 'generate-quiz', component: GenerateQuizComponent },
             { path: 'account/Login', component: LoginPageComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
-    providers:[UserServiceService, QuestionService]
+    providers: [UserServiceService, QuestionService, AuthGuard]
 })
 export class AppModuleShared {
 }

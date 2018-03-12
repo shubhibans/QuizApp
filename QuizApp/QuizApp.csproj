@@ -25,6 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\auth.guard.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ClientApp\app\Services\" />
     <Folder Include="ClientApp\Services\" />
   </ItemGroup>
@@ -62,5 +66,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Amazon.ElasticBeanstalk.Tools" Version="1.1.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\auth.guard.ts" />
   </ItemGroup>
 </Project>

@@ -67,7 +67,8 @@ export class UserServiceService extends BaseService {
     //}
 
     isLoggedIn() {
-        return this.loggedIn;
+        //return this.loggedIn;
+        return false;
     }
 
     
