@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuizApp.Model;
@@ -25,6 +26,7 @@ namespace QuizApp.Controllers
 
         // GET: api/Questions
         [HttpGet]
+        [Authorize]
         public IEnumerable<Question> GetQuestion()
         {
             return _context.Question;

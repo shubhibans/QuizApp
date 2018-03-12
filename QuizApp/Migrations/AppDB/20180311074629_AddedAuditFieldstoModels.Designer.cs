@@ -11,9 +11,10 @@ using System;
 namespace QuizApp.Migrations.AppDB
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20180311074629_AddedAuditFieldstoModels")]
+    partial class AddedAuditFieldstoModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,8 +129,6 @@ namespace QuizApp.Migrations.AppDB
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(255);
 
-                    b.Property<int>("AddedById");
-
                     b.Property<DateTime>("AddedDate");
 
                     b.Property<bool>("Answered");
@@ -145,9 +144,9 @@ namespace QuizApp.Migrations.AppDB
 
                     b.Property<int>("SubjectAreaId");
 
-                    b.HasKey("Id");
+                    b.Property<int>("UserId");
 
-                    b.HasIndex("AddedById");
+                    b.HasKey("Id");
 
                     b.HasIndex("DifficultyId");
 
@@ -156,6 +155,8 @@ namespace QuizApp.Migrations.AppDB
                     b.HasIndex("QuizId");
 
                     b.HasIndex("SubjectAreaId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Question");
                 });
@@ -231,11 +232,6 @@ namespace QuizApp.Migrations.AppDB
 
             modelBuilder.Entity("QuizApp.Model.Question", b =>
                 {
-                    b.HasOne("QuizApp.Model.AppAdmin", "AddedBy")
-                        .WithMany()
-                        .HasForeignKey("AddedById")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("QuizApp.Model.Difficulty", "Difficulty")
                         .WithMany()
                         .HasForeignKey("DifficultyId")
@@ -253,6 +249,11 @@ namespace QuizApp.Migrations.AppDB
                     b.HasOne("QuizApp.Model.SubjectArea", "SubjectArea")
                         .WithMany()
                         .HasForeignKey("SubjectAreaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("QuizApp.Model.AppAdmin", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

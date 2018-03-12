@@ -14,7 +14,7 @@
                     <select class="form-control" id="questiontype" placeholder="" name="questiontype" tmFocus ngModel>
                         <option id="multiplechoice" value="multiplechoice">Multiple Choice Question</option>
                         <option id="paragraph" disabled="disabled">Paragraph</option>
-                        </select>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="subject">Subject</label>
@@ -24,9 +24,16 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="subArea">Sub Area</label>
+                    <select class="form-control" id="subArea" placeholder="" name="subArea" tmFocus ngModel>
+                        <option id="C#" value="C#">C#</option>
+                        <option id="Java" value="Java">Java</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="questiontext">Question Text</label>
                     <input type="text" class="form-control" id="questiontext" placeholder="" required name="questiontext" ngModel>
-          </div>
+                </div>
                 <div class="form-group">
                     <label for="option1">Option 1</label>
                     <input type="text" class="form-control" id="option1" name="option1" required placeholder="option1" ngModel>
@@ -60,9 +67,8 @@
                         <option id="Architect" value="Architect">Architect</option>
                     </select>
                 </div>
-
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Add</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="f2.invalid || isRequesting">Add</button>
                     <!--<app-spinner [isRunning]="isRequesting"></app-spinner>-->
                 </div>
 
@@ -73,21 +79,21 @@
             </form>
         </div>
     </div>
-    <div class="row">
+    <!--<div class="row">
         <div class="col-md-6">
             <h2>For Bulk Upload Use a file.</h2>
             <form #f="ngForm" novalidate (ngSubmit)="registerQuestionsBulk(f)">
                 <div class="form-group">
                     <input type="file" name="filepath" acccept=".xlsx" />
-                    <!--<app-spinner [isRunning]="isRequesting"></app-spinner>-->
+                 
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Sign Up Bulk</button>
-                    <!--<app-spinner [isRunning]="isRequesting"></app-spinner>-->
+                   
                 </div>
             </form>
         </div>
-    </div>
+    </div>-->
 
 
 

@@ -34,17 +34,9 @@ namespace QuizApp
             services.AddDbContext<AppIdDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("QuizApp")));
             services.AddDbContext<AppDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddAutoMapper();
-            var builder = services.AddIdentityCore<AppUser>(o =>
-            {
-                // configure identity options
-                o.Password.RequireDigit = false;
-                o.Password.RequireLowercase = false;
-                o.Password.RequireUppercase = false;
-                o.Password.RequireNonAlphanumeric = false;
-                o.Password.RequiredLength = 6;
-            });
-            builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), builder.Services);
-            builder.AddEntityFrameworkStores<AppIdDBContext>().AddDefaultTokenProviders();
+
+            services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppIdDBContext>().AddDefaultTokenProviders();
+          
 
             
             services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());

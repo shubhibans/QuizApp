@@ -11,9 +11,10 @@ using System;
 namespace QuizApp.Migrations.AppDB
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20180311075023_AddedAuditFieldstoModels1")]
+    partial class AddedAuditFieldstoModels1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,9 +129,9 @@ namespace QuizApp.Migrations.AppDB
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(255);
 
-                    b.Property<int>("AddedById");
-
                     b.Property<DateTime>("AddedDate");
+
+                    b.Property<int>("AddingUserId");
 
                     b.Property<bool>("Answered");
 
@@ -147,7 +148,7 @@ namespace QuizApp.Migrations.AppDB
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddedById");
+                    b.HasIndex("AddingUserId");
 
                     b.HasIndex("DifficultyId");
 
@@ -231,9 +232,9 @@ namespace QuizApp.Migrations.AppDB
 
             modelBuilder.Entity("QuizApp.Model.Question", b =>
                 {
-                    b.HasOne("QuizApp.Model.AppAdmin", "AddedBy")
+                    b.HasOne("QuizApp.Model.AppAdmin", "AddingUser")
                         .WithMany()
-                        .HasForeignKey("AddedById")
+                        .HasForeignKey("AddingUserId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("QuizApp.Model.Difficulty", "Difficulty")

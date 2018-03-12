@@ -11,80 +11,15 @@ using System;
 namespace QuizApp.Migrations.AppDB
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20180311080128_AddedAuditFieldstoModels2")]
+    partial class AddedAuditFieldstoModels2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("QuizApp.Model.AppAdmin", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Company");
-
-                    b.Property<string>("Gender");
-
-                    b.Property<string>("IdentityId");
-
-                    b.Property<string>("Locale");
-
-                    b.Property<string>("Location");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdentityId");
-
-                    b.ToTable("AppAdmin");
-                });
-
-            modelBuilder.Entity("QuizApp.Model.AppUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccessFailedCount");
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<string>("ConcurrencyStamp");
-
-                    b.Property<string>("Email");
-
-                    b.Property<bool>("EmailConfirmed");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<bool>("LockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("NormalizedEmail");
-
-                    b.Property<string>("NormalizedUserName");
-
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("PhoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("TwoFactorEnabled");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AppUser");
-                });
 
             modelBuilder.Entity("QuizApp.Model.Difficulty", b =>
                 {
@@ -128,8 +63,6 @@ namespace QuizApp.Migrations.AppDB
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(255);
 
-                    b.Property<int>("AddedById");
-
                     b.Property<DateTime>("AddedDate");
 
                     b.Property<bool>("Answered");
@@ -146,8 +79,6 @@ namespace QuizApp.Migrations.AppDB
                     b.Property<int>("SubjectAreaId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AddedById");
 
                     b.HasIndex("DifficultyId");
 
@@ -214,13 +145,6 @@ namespace QuizApp.Migrations.AppDB
                     b.ToTable("SubjectArea");
                 });
 
-            modelBuilder.Entity("QuizApp.Model.AppAdmin", b =>
-                {
-                    b.HasOne("QuizApp.Model.AppUser", "Identity")
-                        .WithMany()
-                        .HasForeignKey("IdentityId");
-                });
-
             modelBuilder.Entity("QuizApp.Model.Option", b =>
                 {
                     b.HasOne("QuizApp.Model.Question", "Question")
@@ -231,11 +155,6 @@ namespace QuizApp.Migrations.AppDB
 
             modelBuilder.Entity("QuizApp.Model.Question", b =>
                 {
-                    b.HasOne("QuizApp.Model.AppAdmin", "AddedBy")
-                        .WithMany()
-                        .HasForeignKey("AddedById")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("QuizApp.Model.Difficulty", "Difficulty")
                         .WithMany()
                         .HasForeignKey("DifficultyId")

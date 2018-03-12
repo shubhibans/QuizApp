@@ -25,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BulkFiles\AlgaeFiles\" />
     <Folder Include="ClientApp\app\Services\" />
     <Folder Include="ClientApp\Services\" />
   </ItemGroup>
@@ -60,4 +59,8 @@
     </ItemGroup>
   </Target>
 
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Amazon.ElasticBeanstalk.Tools" Version="1.1.0" />
+  </ItemGroup>
 </Project>

@@ -16,5 +16,7 @@ namespace QuizApp.Model
         public string Description { get; set; }
         [Required]
         public ICollection<Question> Questions { get; set; }
+        [Required]
+        public DateTime AddedDate { get; set; }
     }
 }

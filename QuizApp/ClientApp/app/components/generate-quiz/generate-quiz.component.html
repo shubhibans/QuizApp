@@ -1,21 +1,35 @@
-<fieldset *ngFor="let row of rows">
-    <div class="row">
+<form class="form-inline" style="margin: 10px 10px">
+    <fieldset *ngFor="let row of rows">
+        <div class="row" style="padding-top:5px">
+            <div class="form-group col-sm-3">
+                <label for="Area{{row}}">Subject Area</label>
+                <input class="form-control" type="text" id="Subject{{row}}" />
+            </div>
+            <div class="form-group col-sm-3">
+                <label for="Subarea{{row}}">Sub Area</label>
+                <input class="form-control" type="text" id="Subarea{{row}}" name="Subarea{{row}}" />
+            </div>
 
-        <div div class="col-sm-4">
-            <input class="form-control" type="text" id="Subject{{row}}" />
+            <div class=" form-group col-sm-3">
+                <label for="Subarea{{row}}">Total Questions</label>
+                <input class="form-control" type="number" id="Numquestion{{row}}" />
+            </div>
+
+            <div class=" form-group col-sm-3">
+                <label for="Subarea{{row}}">Pool Size</label>
+                <input class="form-control" type="number" id="Numquestion{{row}}" />
+            </div>
+            <br />
         </div>
-        <div div class="col-sm-4">
-            <input class="form-control" type="text" id="Subarea{{row}}" />
-        </div>
-        <div div class="col-sm-4">
-            <input class="form-control"  type="text" id="Numquestion{{row}}" />
-        </div>
-    </div>
+    </fieldset>
     <br />
-</fieldset>
+
+    <button (click)="AddRow()" class="btn btn-default">Add Row</button>
+    <button (click)="DeleteRow()" [disabled]="showDelete()" class="btn btn-danger">Delete Row</button>
+
+    <input type="submit" class="btn btn-success" value="Submit Quiz" />
+    <input type="submit" class="btn btn-info" value="Reset Quiz" />
+
+</form>
 
 
- 
-<br />
-<button (click)="AddRow()" class="btn btn-success">Add</button>
-<button  (click)="DeleteRow()" [disabled]="showDelete()" class="btn btn-danger" >Delete</button> 

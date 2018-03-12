@@ -41,6 +41,7 @@ import { GenerateQuizComponent } from './components/generate-quiz/generate-quiz.
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'login', component: LoginPageComponent },
             { path: 'generate-quiz', component: GenerateQuizComponent },
+            { path: 'account/Login', component: LoginPageComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],

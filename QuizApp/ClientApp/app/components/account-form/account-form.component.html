@@ -42,7 +42,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Sign Up</button>
+                <button type="submit" class="btn btn-primary" [disabled]="f1.invalid || isRequesting">Sign Up</button>
                 <!--<app-spinner [isRunning]="isRequesting"></app-spinner>-->
             </div>
 
@@ -53,19 +53,19 @@
         </form>
     </div>
 </div>
-<div class="row">
+<!--<div class="row">
     <div class="col-md-6">
         <h2>For Bulk Upload Use a file.</h2>
         <form #f="ngForm" novalidate (ngSubmit)="registerUserBulk(f)">
             <div class="form-group">
                 <input type="file" name="filepath" acccept=".xlsx" />
-                <!--<app-spinner [isRunning]="isRequesting"></app-spinner>-->
-            </div>
+                
+           </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Sign Up Bulk</button>
-                <!--<app-spinner [isRunning]="isRequesting"></app-spinner>-->
+             <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting">Sign Up Bulk</button>
+                
             </div>
             </form>
         </div>
-    </div>
+    </div>-->
 

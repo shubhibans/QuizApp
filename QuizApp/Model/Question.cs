@@ -22,6 +22,10 @@ namespace QuizApp.Model
         public Difficulty Difficulty { get; set; }
         public bool Answered { get; set; }
         public ICollection<Option> Options { get; set; }
-        
+        [Required]
+        public DateTime AddedDate { get; set; }
+        [Required]
+        public AppAdmin AddedBy { get; set; }
+
     }
 }

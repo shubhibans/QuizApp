@@ -10,6 +10,7 @@ namespace QuizApp.Model
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public DateTime AddedDate { get; set; }
         
     }
 }
