@@ -36,7 +36,7 @@ namespace QuizApp
             services.AddAutoMapper();
 
             services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppIdDBContext>().AddDefaultTokenProviders();
-          
+            services.AddAuthentication().AddCookie().AddJwtBearer();
 
             
             services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ namespace QuizApp.Controllers
 {
     
     [Route("api/Questions")]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class QuestionsController : Controller
     {
         private readonly AppDBContext _context;
@@ -101,11 +103,12 @@ namespace QuizApp.Controllers
             //var result=new OptionsController(_context)
             Question Question1 = new Question
             {
-                Difficulty = diff,
-                SubjectArea = subject,
+                DifficultyId = diff.Id,
+                SubjectAreaId = subject.Id,
                 Question_txt = model.Questiontext,
-                QuestionType = questtype,
-                Answered = false
+                QuestionTypeId = questtype.Id,
+                Answered = false,
+                AddedDate = System.DateTime.UtcNow
             };
 
             _context.Question.Add(Question1);

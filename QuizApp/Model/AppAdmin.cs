@@ -18,6 +18,9 @@ namespace QuizApp.Model
         public string Gender { get; set; }
         public string Company { get; set; }
         [Required]
+        [ForeignKey("AddedBy")]
+        public string AddedById { get; set; }
+        [Required]
         public AppUser AddedBy { get; set; }
         [Required]
         public DateTime AddedDate { get; set; }
